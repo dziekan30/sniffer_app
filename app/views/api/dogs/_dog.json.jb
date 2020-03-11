@@ -1,0 +1,17 @@
+{
+  id: dog.id,
+  name: dog.name,
+  breed_description: dog.breed_description,
+  bio: dog.bio,
+  active_status: dog.active_status,
+  size: dog.size,
+  latitude: dog.latitude,
+  longitude: dog.longitude,
+  user_id: dog.user_id,
+  price: dog.price,
+  address: dog.address,
+  city: dog.city,
+  zipcode: dog.zipcode,
+  images: dog.images.map { |image| render partial: "api/images/image.json.jb", locals: {image: image} }
+
+}

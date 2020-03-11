@@ -1,0 +1,3 @@
+@dogs.map do |dog|
+  render partial: "dog.json.jb", locals: {dog: dog}
+end

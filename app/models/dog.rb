@@ -4,4 +4,6 @@ class Dog < ApplicationRecord
   has_many :images
   has_many :makeups
   has_many :breeds, through: :makeups
+  has_many :users, through: :requests
+
 end

@@ -1,38 +1,24 @@
 class Api::DogsController < ApplicationController
   before_action :authenticate_user, only: [:create, :update, :destroy]
   def index
-    if current_user
-      @dogs = current_user.dogs
-      render 'index.json.jb'
-    else
-      render json: {}
-    end
-    # @dogs = Dog.all
-    # render 'index.json.jb'
+    
+    # if current_user
+    #   @dogs = current_user.dogs
+    #   render 'index.json.jb'
+    # else
+    #   render 'index.json.jb'
+    #   # render json: {}
+    # end
+
+    @dogs = Dog.all
 
     search_term = params[:search]
-    name_option = params[:breed_description]
-    # sort_attribute = params[:sort]
-    # sort_order = params[:sort_order]
-    # category_choice = params[:category]
-
     
     if search_term
-      @products = @products.where("name iLIKE ?", "%#{ search_term }%")
+      @dogs = @dogs.where("name iLIKE ?", "%#{ search_term }%")
     end
 
-    if discount_option == "true"
-      @products = @products.where("price < ?" , 1000)
-    end
-   
-
-    # if sort_attribute && sort_order
-    #   @products = @products.order(sort_attribute => sort_order) 
-    # elsif sort_attribute
-    #   @products = @products.order(sort_attribute)
-    # else
-    #   @products = @products.order(:id)
-    # end
+    render 'index.json.jb'
 
   end
 
@@ -86,7 +72,6 @@ class Api::DogsController < ApplicationController
     else
       render json: {errors: @dog.errors.full_messages}, status: :unprocessable_entity
     end
-    
   end
 
   def destroy

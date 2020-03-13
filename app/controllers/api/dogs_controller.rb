@@ -1,7 +1,7 @@
 class Api::DogsController < ApplicationController
-  before_action :authenticate_user, only: [:create, :update, :destroy]
+  # before_action :authenticate_user, only: [:create, :update, :destroy]
   def index
-    
+
     # if current_user
     #   @dogs = current_user.dogs
     #   render 'index.json.jb'

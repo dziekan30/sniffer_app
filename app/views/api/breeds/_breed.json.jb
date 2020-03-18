@@ -1,0 +1,4 @@
+{
+  id: breed.id,
+  name: breed.name
+}

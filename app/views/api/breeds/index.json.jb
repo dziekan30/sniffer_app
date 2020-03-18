@@ -1,0 +1,3 @@
+@breeds.map do |breed|
+  render partial: "breed.json.jb", locals: {breed: breed}
+end

@@ -14,7 +14,7 @@ class Api::RequestsController < ApplicationController
                             approved: false
                           )
 
-    @request.save
+    @request.save!
     render 'show.json.jb'
   
   end
@@ -28,17 +28,18 @@ class Api::RequestsController < ApplicationController
     @request = Request.find(params[:id])
 
     if current_user.id == @request.user_id
-      @request.dog_id = params[:dog_id]
-      @request.approved = params[:approved]
+        @request.approved = params[:approved]
 
       if @request.save
         render "show.json.jb"
       else
         render json: {errors: @request.errors.full_messages}, status: :unprocessable_entity
       end
+
     else 
       render json: {}, status: :unauthorized
     end
+
   end
 
   def destroy

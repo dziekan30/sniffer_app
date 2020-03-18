@@ -1,0 +1,3 @@
+@makeups.map do |makeup|
+  render partial: 'makeup.json.jb', locals: { makeup: makeup }
+end

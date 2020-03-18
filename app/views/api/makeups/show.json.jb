@@ -1,0 +1,1 @@
+render partial: 'makeup.json.jb', locals: { makeup: @makeup }

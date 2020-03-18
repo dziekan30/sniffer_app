@@ -1,0 +1,5 @@
+{
+  id: makeup.id,
+  dog_id: makeup.dog_id,
+  breed_id: makeup.breed_id
+}

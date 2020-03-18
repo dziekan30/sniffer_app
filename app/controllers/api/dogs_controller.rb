@@ -13,9 +13,15 @@ class Api::DogsController < ApplicationController
     @dogs = Dog.all
 
     search_term = params[:search]
+    breed_search = params[:breed]
     
     if search_term
       @dogs = @dogs.where("name iLIKE ?", "%#{ search_term }%")
+    end
+
+    if breed_search
+      breed = Breed.find_by(name: breed_search)
+      @dogs = breed.dogs
     end
 
     render 'index.json.jb'
@@ -29,7 +35,6 @@ class Api::DogsController < ApplicationController
 
   def create
     @dog = Dog.new(
-                  id: params[:id],
                   user_id: current_user.id,
                   name: params[:name],
                   breed_description: params[:breed_description],
@@ -45,6 +50,13 @@ class Api::DogsController < ApplicationController
                   # image_url: params[:image_url]
                   )
     if @dog.save
+      params[:breed_ids].each do |breed_id|
+        Makeup.create(
+                     breed_id: breed_id,
+                     dog_id: @dog.id
+                    )
+      end
+
       render "show.json.jb"
     else
       render json: {errors: @dog.errors.full_messages}, status: :unprocessable_entity
@@ -66,8 +78,15 @@ class Api::DogsController < ApplicationController
                   @dog.address = params[:address] || @dog.address
                   @dog.city = params[:city] || @dog.city
                   @dog.zipcode = params[:zipcode] || @dog.zipcode
-                  
-    if @dog.save!
+    
+    @makeups = Makeup.find(params[:ids])              
+      @makeups.params[:breed_ids].each do |breed_id|
+        @makeup.dog_id = params[:dog_id] || @makeup.dog_id
+        @makeup.breed_id = params[:breed_id] || @makeup.breed_id
+      end
+    
+              
+    if @dog.save
       render "show.json.jb"
     else
       render json: {errors: @dog.errors.full_messages}, status: :unprocessable_entity

@@ -22,6 +22,18 @@ Rails.application.routes.draw do
     patch '/requests/:id' => 'requests#update'
     delete '/requests/:id' => 'requests#destroy'
 
+    get  '/breeds' => 'breeds#index'
+    post '/breeds' => 'breeds#create'
+    get '/breeds/:id' => 'breeds#show'
+    patch '/breeds/:id' => 'breeds#update'
+    delete '/breeds/:id' => 'breeds#destroy'
+
+    get  '/makeups' => 'makeups#index'
+    post '/makeups' => 'makeups#create'
+    get '/makeups/:id' => 'makeups#show'
+    patch '/makeups/:id' => 'makeups#update'
+    delete '/makeups/:id' => 'makeups#destroy'
+    
     
   end
 end

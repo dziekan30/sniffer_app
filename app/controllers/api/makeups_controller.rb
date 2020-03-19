@@ -36,4 +36,11 @@ class Api::MakeupsController < ApplicationController
     end
   
   end
+
+  def destroy
+    makeup = Makeup.find(params[:id])
+    makeup.destroy
+    render json: {message: "Makeup is gonnneeeee.........."}
+    
+  end
 end

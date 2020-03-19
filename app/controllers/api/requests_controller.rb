@@ -14,7 +14,7 @@ class Api::RequestsController < ApplicationController
                             approved: false
                           )
 
-    @request.save!
+    @request.save
     render 'show.json.jb'
   
   end

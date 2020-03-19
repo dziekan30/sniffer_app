@@ -1,4 +1,4 @@
-{
+dog_json = {
   id: dog.id,
   name: dog.name,
   breed_description: dog.breed_description,
@@ -15,3 +15,9 @@
   images: dog.images.map { |image| render partial: "api/images/image.json.jb", locals: {image: image} },
   breeds: dog.breeds.map { |breed| render partial: "api/breeds/breed.json.jb", locals: {breed: breed} }
 }
+
+if current_user
+  dog_json[:requested] = current_user.requested_dogs.include?(dog)
+end
+
+dog_json

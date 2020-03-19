@@ -79,14 +79,17 @@ class Api::DogsController < ApplicationController
                   @dog.city = params[:city] || @dog.city
                   @dog.zipcode = params[:zipcode] || @dog.zipcode
     
-    @makeups = Makeup.find(params[:ids])              
-      @makeups.params[:breed_ids].each do |breed_id|
-        @makeup.dog_id = params[:dog_id] || @makeup.dog_id
-        @makeup.breed_id = params[:breed_id] || @makeup.breed_id
-      end
-    
+            makeup = Makeup.find(params[:breed_ids])             
+            makeup.clear
+        
               
     if @dog.save
+      params[:breed_ids].each do |breed_id|
+        Makeup.create(
+                     breed_id: breed_id,
+                     dog_id: @dog.id
+                    )
+      end
       render "show.json.jb"
     else
       render json: {errors: @dog.errors.full_messages}, status: :unprocessable_entity

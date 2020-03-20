@@ -8,7 +8,6 @@ class Dog < ApplicationRecord
   has_many :requests
   has_many :adopters, through: :requests, source: :user
 
-
   # belongs_to :user
   has_many :images
   has_many :makeups

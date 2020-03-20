@@ -1,4 +1,10 @@
-{
-  id: image.id,
-  image_url: image.image_url
-}
+json_hash = {
+            id: image.id,
+            dog_id: image.dog_id
+            }
+
+if image.file.attachment
+ json_hash[:url] = rails_blob_url(image.file) 
+end
+
+json_hash

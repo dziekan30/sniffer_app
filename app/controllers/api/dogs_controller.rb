@@ -47,7 +47,6 @@ class Api::DogsController < ApplicationController
                   address: params[:address],
                   city: params[:city],
                   zipcode: params[:zipcode]
-                  # image_url: params[:image_url]
                   )
     if @dog.save
       params[:breed_ids].each do |breed_id|
@@ -66,30 +65,29 @@ class Api::DogsController < ApplicationController
   def update
     @dog = Dog.find(params[:id])
 
-                  @dog.name = params[:name] || @dog.name
-                  @dog.breed_description = params[:breed_description] || @dog.breed_description
-                  @dog.bio = params[:bio] || @dog.bio
-                  @dog.active_status = params[:active_status] || @dog.active_status
-                  @dog.size = params[:size] ||  @dog.size
-                  @dog.latitude = params[:latitude] || @dog.latitude
-                  @dog.longitude = params[:longitude] || @dog.longitude
-                  @dog.user_id = params[:user_id] || @dog.user_id
-                  @dog.price = params[:price] || @dog.price
-                  @dog.address = params[:address] || @dog.address
-                  @dog.city = params[:city] || @dog.city
-                  @dog.zipcode = params[:zipcode] || @dog.zipcode
-    
-            makeup = Makeup.find(params[:breed_ids])             
-            makeup.clear
-        
+    @dog.name = params[:name] || @dog.name
+    @dog.breed_description = params[:breed_description] || @dog.breed_description
+    @dog.bio = params[:bio] || @dog.bio
+    @dog.active_status = params[:active_status] || @dog.active_status
+    @dog.size = params[:size] ||  @dog.size
+    @dog.latitude = params[:latitude] || @dog.latitude
+    @dog.longitude = params[:longitude] || @dog.longitude
+    @dog.user_id = params[:user_id] || @dog.user_id
+    @dog.price = params[:price] || @dog.price
+    @dog.address = params[:address] || @dog.address
+    @dog.city = params[:city] || @dog.city
+    @dog.zipcode = params[:zipcode] || @dog.zipcode
               
     if @dog.save
+      @dog.makeups.destroy_all
+
       params[:breed_ids].each do |breed_id|
         Makeup.create(
                      breed_id: breed_id,
                      dog_id: @dog.id
                     )
       end
+      
       render "show.json.jb"
     else
       render json: {errors: @dog.errors.full_messages}, status: :unprocessable_entity

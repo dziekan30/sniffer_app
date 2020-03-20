@@ -6,8 +6,8 @@ class Api::ImagesController < ApplicationController
 
   def create
     @image = Image.new(
-                         image_url: params[:image_url],
-                         dog_id: params[:dog_id]
+                         dog_id: params[:dog_id],
+                         file: params[:file]
                         )
     
     if @image.save
@@ -21,11 +21,10 @@ class Api::ImagesController < ApplicationController
     @image = Image.find(params[:id])
     render 'show.json.jb'
   end
-
+ 
   def update
     @image = Image.find(params[:id])
 
-    @image.image_url = params[:image_url] || @image.image_url
     @image.dog_id = params[:dog_id] || @image.dog_id
 
     if @image.save

@@ -16,6 +16,8 @@ dog_json = {
   breeds: dog.breeds.map { |breed| render partial: "api/breeds/breed.json.jb", locals: {breed: breed} }
 }
 
+
+
 if current_user
   dog_json[:requested] = current_user.requested_dogs.include?(dog)
 end

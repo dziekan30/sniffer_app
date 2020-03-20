@@ -13,7 +13,8 @@ dog_json = {
   city: dog.city,
   zipcode: dog.zipcode,
   images: dog.images.map { |image| render partial: "api/images/image.json.jb", locals: {image: image} },
-  breeds: dog.breeds.map { |breed| render partial: "api/breeds/breed.json.jb", locals: {breed: breed} }
+  breeds: dog.breeds.map { |breed| render partial: "api/breeds/breed.json.jb", locals: {breed: breed} },
+  requests: dog.requests.map { |request| render partial: "api/requests/request.json.jb", locals: {request: request} },
 }
 
 

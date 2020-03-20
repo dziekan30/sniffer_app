@@ -2,5 +2,6 @@
   id: request.id,
   user_id: request.user_id,
   dog_id: request.dog_id,
-  approved: request.approved
+  approved: request.approved,
+  user: (render partial: "api/users/user.json.jb", locals: {user: request.user})
 }

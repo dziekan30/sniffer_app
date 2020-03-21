@@ -14,9 +14,23 @@ class Api::RequestsController < ApplicationController
                             approved: false
                           )
 
-    @request.save
-    render 'show.json.jb'
-  
+     if @request.save
+      @client = Twilio::REST::Client.new(Rails.application.credentials.dig(:twilio, :account_sid), Rails.application.credentials.dig(:twilio, :auth_token))
+
+      message = @client.messages.create(
+                                   body: "Hi there! I'm interested adopting this Dog #{@request.dog.name}",
+                                   from: '+12312250904',
+                                   to:  @request.dog.owner.phone_number
+                                )
+
+      # render json: {message_sid: message.sid}
+
+      render 'show.json.jb'
+    
+    else 
+      render json: {errors: @request.errors.full_messages}, status: :unprocessable_entity
+    end
+
   end
  
   def show

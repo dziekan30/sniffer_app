@@ -14,4 +14,5 @@ class Dog < ApplicationRecord
   has_many :breeds, through: :makeups
   has_many :users, through: :requests
 
+  enum size: { "small" => 0, "medium" => 1, "large" => 2, "teacup" => 3 }
 end

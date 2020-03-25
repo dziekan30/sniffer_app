@@ -1,5 +1,6 @@
 class Api::DogsController < ApplicationController
-  # before_action :authenticate_user, only: [:create, :update, :destroy]
+  before_action :authenticate_user, only: [:create, :update, :destroy]
+  
   def index
 
     # if current_user
@@ -28,18 +29,13 @@ class Api::DogsController < ApplicationController
 
   end
 
-  def show
-    @dog = Dog.find(params[:id])
-    render 'show.json.jb'
-  end
-
   def create
     @dog = Dog.new(
                   user_id: current_user.id,
                   name: params[:name],
                   breed_description: params[:breed_description],
                   bio: params[:bio],
-                  active_status: params[:active_status],
+                  active_status: true,
                   size: params[:size],
                   latitude: params[:latitude],
                   longitude: params[:longitude],
@@ -60,6 +56,11 @@ class Api::DogsController < ApplicationController
     else
       render json: {errors: @dog.errors.full_messages}, status: :unprocessable_entity
     end
+  end
+
+  def show
+    @dog = Dog.find(params[:id])
+    render 'show.json.jb'
   end
 
   def update

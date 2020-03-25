@@ -22,6 +22,8 @@ gem 'jwt'
 
 gem 'twilio-ruby'
 
+gem 'geocoder'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

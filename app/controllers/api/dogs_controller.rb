@@ -69,7 +69,7 @@ class Api::DogsController < ApplicationController
     @dog.breed_description = params[:breed_description] || @dog.breed_description
     @dog.bio = params[:bio] || @dog.bio
     @dog.active_status = params[:active_status] || @dog.active_status
-    @dog.size = params[:size] ||  @dog.size
+    @dog.size = params[:size] || @dog.size
     @dog.latitude = params[:latitude] || @dog.latitude
     @dog.longitude = params[:longitude] || @dog.longitude
     @dog.user_id = params[:user_id] || @dog.user_id

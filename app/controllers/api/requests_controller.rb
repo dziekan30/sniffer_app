@@ -18,9 +18,10 @@ class Api::RequestsController < ApplicationController
       @client = Twilio::REST::Client.new(Rails.application.credentials.dig(:twilio, :account_sid), Rails.application.credentials.dig(:twilio, :auth_token))
 
       message = @client.messages.create(
-                                   body: "Hi there! I'm interested adopting this Dog #{@request.dog.name}",
+                                   body: "Hi there! I'm interested adopting #{@request.dog.name}",
                                    from: '+12312250904',
-                                   to:  @request.dog.owner.phone_number
+                                   to:  '+13124681623'
+                                   # to:  @request.dog.owner.phone_number
                                 )
 
       # render json: {message_sid: message.sid}
@@ -41,7 +42,7 @@ class Api::RequestsController < ApplicationController
   def  update
     @request = Request.find(params[:id])
 
-    if current_user.id == @request.user_id
+    if current_user.id == @request.dog.user_id
         @request.approved = params[:approved]
 
       if @request.save

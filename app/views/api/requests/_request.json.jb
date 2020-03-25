@@ -4,4 +4,22 @@
   dog_id: request.dog_id,
   approved: request.approved,
   user: (render partial: "api/users/user.json.jb", locals: {user: request.user})
+  # dog: {
+  #   id: request.dog.id,
+  #   name: dog.name
+  #   breed_description: request.dog.breed_description,
+  #   bio: request.dog.bio,
+  #   active_status: request.dog.active_status,
+  #   size: request.dog.size,
+  #   latitude: request.dog.latitude,
+  #   longitude: request.dog.longitude,
+  #   user_id: request.dog.user_id,
+  #   price: request.dog.price,
+  #   address: request.dog.address,
+  #   city: request.dog.city,
+  #   zipcode: request.dog.zipcode,
+  #   images: request.dog.images.map { |image| render partial: "api/images/image.json.jb", locals: {image: image} },
+  #   breeds: request.dog.breeds.map { |breed| render partial: "api/breeds/breed.json.jb", locals: {breed: breed} },
+  #   default_image_url: request.dog.default_image_url
+  # }
 }

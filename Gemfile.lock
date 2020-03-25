@@ -75,6 +75,7 @@ GEM
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
+    geocoder (1.6.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     http (4.3.0)
@@ -202,6 +203,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.2)
   byebug
+  geocoder
   http
   jb
   jbuilder (~> 2.7)

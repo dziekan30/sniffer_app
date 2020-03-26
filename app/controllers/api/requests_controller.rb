@@ -2,7 +2,7 @@ class Api::RequestsController < ApplicationController
   before_action :authenticate_user
   
   def index
-    @requests = Request.all
+    @requests = current_user.requests
     render 'index.json.jb'
   end
 

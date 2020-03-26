@@ -6,12 +6,12 @@ class Dog < ApplicationRecord
   # a owner_id foreign key on the dogs table (but it's actually user_id)
   # assumes that I have a Owner class (but its actually User class)
 
-  has_many :requests
+  has_many :requests, dependent: :destroy
   has_many :adopters, through: :requests, source: :user
 
   # belongs_to :user
   has_many :images
-  has_many :makeups
+  has_many :makeups, dependent: :destroy
   has_many :breeds, through: :makeups
   has_many :users, through: :requests
 

@@ -24,6 +24,8 @@ gem 'twilio-ruby'
 
 gem 'geocoder'
 
+# gem 'ffi', '1.9.18'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

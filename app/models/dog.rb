@@ -25,5 +25,7 @@ class Dog < ApplicationRecord
     else
       "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTlfbdWcJoCo5nAcF7RNLHS6nDxoJcIPzXzRggD3VDxLpSlJh1q"
     end
+    # return  "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTlfbdWcJoCo5nAcF7RNLHS6nDxoJcIPzXzRggD3VDxLpSlJh1q"
+
   end
 end

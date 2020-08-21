@@ -18,6 +18,9 @@ request.save
 dog = Dog.new(name: "Lexi", breed_description: "Golden Retriever", bio: "Very friendly dog. Love to play !!!", active_status: true, size: 3, user_id: 1, price: 100, address: "215 Ohio St", city: "Chicago IL", zipcode: "60654")
 dog.save
 
+dog = Dog.new(name: "Lexi", breed_description: "Golden Retriever", bio: "Very friendly dog. Love to play !!!", active_status: true, size: 3, user_id: 1, price: 100, address: "215 Ohio St", city: "Chicago IL", zipcode: "60654")
+dog.save
+
 image = Image.new(dog_id: 1, image_url: "https://www.gannett-cdn.com/presto/2020/02/03/PROC/23928de8-75f4-4cbd-aa93-a6f68ad330f7-20200201-_MS_0622.jpg?crop=3892,2189,x0,y183&width=1600&height=800&format=pjpg&auto=webp")
 image.save
 

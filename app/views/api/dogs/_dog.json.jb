@@ -12,7 +12,7 @@ dog_json = {
   address: dog.address,
   city: dog.city,
   zipcode: dog.zipcode,
-  # images: dog.images.map { |image| render partial: "api/images/image.json.jb", locals: {image: image} },
+  images: dog.images.map { |image| render partial: "api/images/image.json.jb", locals: {image: image} },
   breeds: dog.breeds.map { |breed| render partial: "api/breeds/breed.json.jb", locals: {breed: breed} },
   requests: dog.requests.map { |request| render partial: "api/requests/request.json.jb", locals: {request: request} },
   default_image_url: dog.default_image_url

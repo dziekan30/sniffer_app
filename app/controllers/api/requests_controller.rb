@@ -19,9 +19,9 @@ class Api::RequestsController < ApplicationController
 
       message = @client.messages.create(
                                    body: "Hi there! I'm interested adopting #{@request.dog.name}",
-                                   from: '+12312250904',
-                                   
-                                   to:  @request.dog.owner.phone_number
+                                   from: '+12563804814',
+                                   to:   '+13124681623'
+                                   # to:  @request.dog.owner.phone_number
                                 )
 
       # render json: {message_sid: message.sid}

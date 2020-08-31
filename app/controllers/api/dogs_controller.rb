@@ -10,6 +10,11 @@ class Api::DogsController < ApplicationController
     #   render 'index.json.jb'
     #   # render json: {}
     # end
+    #
+    #
+    #
+    #
+    
 
     @dogs = Dog.all
 

@@ -4,7 +4,7 @@ json_hash = {
             }
 
 if image.file.attachment
- json_hash[:url] = rails_blob_url(image.file) 
+  json_hash[:url] = rails_blob_url(image.file) 
 end
 
 json_hash

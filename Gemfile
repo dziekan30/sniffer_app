@@ -24,7 +24,9 @@ gem 'twilio-ruby'
 
 gem 'geocoder'
 
-gem 'google-cloud-storage'
+# gem 'google-cloud-storage'
+
+gem "aws-sdk-s3", require: false
 
 
 # Use Active Storage variant

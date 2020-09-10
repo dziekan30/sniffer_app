@@ -22,7 +22,7 @@ class Dog < ApplicationRecord
   def default_image_url
     if images.any?
       # rails_blob_url(images.first.file, host: "http://localhost:3000")
-      rails_blob_url(images.first.file )
+      rails_blob_url(images.first.file, host: "https://sniffer-app.herokuapp.com" )
     else
       "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTlfbdWcJoCo5nAcF7RNLHS6nDxoJcIPzXzRggD3VDxLpSlJh1q"
     end
